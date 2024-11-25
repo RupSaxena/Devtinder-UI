@@ -9,15 +9,17 @@ import axios from "axios";
 const Body=()=>{
     const dispatch=useDispatch();
     const navigate=useNavigate();
-    const userdata=useSelector(store=>store.user)
-    const fetchdata=()=>{
-        if(userdata) return;
+    const userdata=useSelector((store)=>store.user)
+    console.log(userdata);
+    const fetchdata=async ()=>{
+     //   if(userdata) return;
         try{
-        const res=axios.get(BASE_URL+"/profile",{withCredentials:true});
+        const res=await axios.get(BASE_URL+"/profile",{withCredentials:true});
+        console.log(res.data);
 dispatch(adduser(res.data))
         }
         catch(err){
-            if(err.code===401){
+            if(err.status===401){
             navigate("/login");
             }
             console.log(err);
@@ -27,10 +29,11 @@ dispatch(adduser(res.data))
         
     fetchdata();
     },[])
-return(<>
+return(<div>
+
     <Navbar/>
     <Outlet/>
-    <Footer/></>
+    <Footer/></div>
 )
 }
 export default Body;

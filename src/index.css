@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* #grad1 {
+    
+    background-color: red; 
+    background-image: linear-gradient(to bottom right, rgba(255, 0, 0, 0.461), rgba(255, 255, 0, 0.896));
+  } */
